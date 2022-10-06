@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, Modal,  Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, Modal,  TouchableOpacity } from 'react-native';
 
 
 export default function MyModal({ modalVisible, selectedRow, dismissModal }) {
@@ -20,16 +20,14 @@ export default function MyModal({ modalVisible, selectedRow, dismissModal }) {
       <View style={styles.modalView}>
        
       <Image
-        style={{width: 300, height: 400}}
+       
         source={{uri: selectedRow.thumbnailUrl}}
+        style={{width: 300, height: 400, marginBottom: 20}}
         />
-
-        <Pressable
-            style={{marginTop: 20}}
-          onPress={() => dismissModal()}
-        >
-          <Text >Close</Text>
-        </Pressable>
+        <TouchableOpacity style={styles.closeButton} onPress={dismissModal}>
+            <Text style={{color: "white"}}>Close</Text>
+        </TouchableOpacity>
+      
       </View>
     </View>
   </Modal>
@@ -41,7 +39,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: 22,
+      
       },
     modalView: {
       margin: 20,
@@ -58,5 +57,9 @@ const styles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5
     },
+    closeButton: {
+       height: 50,width: 100, marginTop: 10, backgroundColor: "#696969",  justifyContent: "center",
+        alignItems: "center", 
+    }
    
   });
