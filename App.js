@@ -19,6 +19,7 @@ export default function App() {
       .finally(() => 
       {
       setLoading(false)
+      console.log("reached")
      
       }
 
